@@ -1,0 +1,4 @@
+#!/bin/sh
+
+LD_PRELOAD='/tmp/libcallback.so:/tmp/libtinyalsa.so.2.0.0:/system/lib/libsetunbuf.so' /tmp/stuff/iCamera
+
