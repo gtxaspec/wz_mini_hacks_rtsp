@@ -12,6 +12,9 @@ ENABLE_USB_ETH="false"
 ENABLE_USB_DIRECT="false"
 USB_DIRECT_MAC_ADDR="02:01:02:03:04:08"
 
+RTSP_ENABLED="true"
+RTSP_ENABLE_AUDIO="false"
+
 echo  "run_mmc.sh start" > /dev/kmsg
 
 if [[ -d /configs/.ssh ]]; then
@@ -73,6 +76,20 @@ if [[ "$DISABLE_FW_UPGRADE" == "true" ]]; then
 	mount --bind /tmp/.hosts_wz /etc/hosts
 fi
 
+if [[ "$RTSP_ENABLED" == "true" ]]; then
+	mkdir /tmp/alsa
+	cp /media/mmc/wz_mini/etc/alsa.conf /tmp/alsa
+
+	if [[ "$RTSP_ENABLE_AUDIO" == "true" ]]; then
+		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib ./v4l2rtspserver -C1 -a S16_LE  /dev/video1,hw:Loopback,0 &
+	else
+		echo "rtsp audio disabled"
+		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib ./v4l2rtspserver -s /dev/video1 &
+	fi
+	else
+	echo "rtsp disabled"
+fi
+
 echo set hostname
 hostname $HOSTNAME
 
@@ -85,5 +102,4 @@ sleep 3
 #such as mount nfs, ping, etc
 
 #mount -t nfs -o nolock,rw,noatime,nodiratime 192.168.1.1:/volume1 /media/mmc/record
-/media/mmc/v4l2rtspserver /dev/video1 -s &
 

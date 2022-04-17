@@ -32,9 +32,9 @@ static uint32_t audio_pcm_capture(struct frames_st *frames) {
     int flags = PCM_OUT | PCM_MMAP;
     const struct pcm_config config = {
       .channels = 1,
-      .rate = 8000,
+      .rate = 16000,
       .format = PCM_FORMAT_S16_LE,
-      .period_size = 320,
+      .period_size = 1024,
       .period_count = 4,
       .start_threshold = 320,
       .silence_threshold = 0,
