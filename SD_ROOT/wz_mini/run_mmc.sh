@@ -76,6 +76,12 @@ if [[ "$DISABLE_FW_UPGRADE" == "true" ]]; then
 	mount --bind /tmp/.hosts_wz /etc/hosts
 fi
 
+echo set hostname
+hostname $HOSTNAME
+
+echo Run dropbear ssh server
+/media/mmc/wz_mini/bin/dropbearmulti dropbear -R -m
+
 if [[ "$RTSP_ENABLED" == "true" ]]; then
 	mkdir /tmp/alsa
 	cp /media/mmc/wz_mini/etc/alsa.conf /tmp/alsa
@@ -89,12 +95,6 @@ if [[ "$RTSP_ENABLED" == "true" ]]; then
 	else
 	echo "rtsp disabled"
 fi
-
-echo set hostname
-hostname $HOSTNAME
-
-echo Run dropbear ssh server
-/media/mmc/wz_mini/bin/dropbearmulti dropbear -R -m
 
 sleep 3
 
