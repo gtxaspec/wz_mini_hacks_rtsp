@@ -16,12 +16,14 @@ echo '
 
 set -x
 
-insmod /opt/v4l2loopback.ko video_nr=1
+sleep 1
+
+insmod /opt/wz_mini/lib/modules/v4l2loopback.ko video_nr=1
 mount -t tmpfs /tmp
 mount --bind /opt/wz_mini/etc/init.d/original_rcS /etc/init.d/rcS
 
-cp /opt/libcallback.so /tmp
-cp /opt/libtinyalsa.so.2.0.0 /tmp
+cp /opt/wz_mini/lib/libcallback.so /tmp
+cp /opt/wz_mini/lib/libtinyalsa.so.2.0.0 /tmp
 
 cp /opt/wz_mini/etc/shadow /tmp/.shadow
 mount --bind /tmp/.shadow /etc/shadow

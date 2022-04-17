@@ -81,10 +81,10 @@ if [[ "$RTSP_ENABLED" == "true" ]]; then
 	cp /media/mmc/wz_mini/etc/alsa.conf /tmp/alsa
 
 	if [[ "$RTSP_ENABLE_AUDIO" == "true" ]]; then
-		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib ./v4l2rtspserver -C1 -a S16_LE  /dev/video1,hw:Loopback,0 &
+		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib /media/mmc/wz_mini/bin/v4l2rtspserver -C1 -a S16_LE  /dev/video1,hw:Loopback,0 &
 	else
 		echo "rtsp audio disabled"
-		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib ./v4l2rtspserver -s /dev/video1 &
+		LD_LIBRARY_PATH=/media/mmc/wz_mini/lib /media/mmc/wz_mini/bin/v4l2rtspserver -s /dev/video1 &
 	fi
 	else
 	echo "rtsp disabled"
@@ -102,4 +102,3 @@ sleep 3
 #such as mount nfs, ping, etc
 
 #mount -t nfs -o nolock,rw,noatime,nodiratime 192.168.1.1:/volume1 /media/mmc/record
-
