@@ -11,6 +11,7 @@ Run whatever firmware you want on your cameras and have root access to the devic
 
 ## Features
 * RTSP at <ipaddress>:8554/unicast
+* Video Only
 
 ## BYO
 
