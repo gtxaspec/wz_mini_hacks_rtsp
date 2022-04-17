@@ -11,7 +11,7 @@ Run whatever firmware you want on your cameras and have root access to the devic
 
 ## Features
 * RTSP at <ipaddress>:8554/unicast
-* Video Only
+* configure video only or with audio in run_mmc.sh
 
 ## BYO
 
