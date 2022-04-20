@@ -10,6 +10,7 @@ Run whatever firmware you want on your cameras and have root access to the devic
 
 
 ## Features
+## DEPRECATED, use main release @ http://www.github.com/gtxaspec/wz_mini_hacks
 * RTSP at <ipaddress>:8554/unicast
 * configure video only or with audio in run_mmc.sh
 
